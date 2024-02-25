@@ -1,0 +1,32 @@
+<div class="col">
+  <div class="left">
+    <h2>Compounds</h2>
+    <ul class="heroes">
+      <li *ngFor="let comp of compounds">
+        <button [class.selected]="comp === selectedCompound" type="button" (click)="onSelectCompound(comp)">
+          <span class="badge">{{comp.name}}</span>
+          <img src={{comp.image}}>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="center">
+    <h2>Reagents</h2>
+    <ul class="heroes">
+      <div *ngFor="let reagent of reagents">
+        <button [class.selected]="reagent === selectedReagent" type="button" (click)="onSelectReagent(reagent)">
+          <span class="badge">{{reagent.name}}</span>
+          <img [src]="reagent.image">
+        </button>
+      </div>
+    </ul>
+  </div>
+
+  <div class="right">
+    <div *ngIf="selectedCompound && selectedReagent">
+      <h2 class="product">Predicted Product</h2>
+      <div>
+        <img src={{productImage}} width="600px" height="200px">
+      </div>
+    </div>
+  </div>
